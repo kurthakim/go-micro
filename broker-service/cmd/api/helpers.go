@@ -8,9 +8,9 @@ import (
 )
 
 type jsonResponse struct {
-	Error bool `json:"error"`
+	Error   bool   `json:"error"`
 	Message string `json:"message"`
-	Data any `json:"data,omitempty"`
+	Data    any    `json:"data,omitempty"`
 }
 
 func (app *Config) readJSON(w http.ResponseWriter, r *http.Request, data any) error {
@@ -37,6 +37,7 @@ func (app *Config) writeJSON(w http.ResponseWriter, status int, data any, header
 	if err != nil {
 		return err
 	}
+
 	if len(headers) > 0 {
 		for key, value := range headers[0] {
 			w.Header()[key] = value
