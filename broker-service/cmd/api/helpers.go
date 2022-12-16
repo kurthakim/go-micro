@@ -42,14 +42,16 @@ func (app *Config) writeJSON(w http.ResponseWriter, status int, data any, header
 		for key, value := range headers[0] {
 			w.Header()[key] = value
 		}
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(status)
-		_, err = w.Write(out)
-		if err != nil {
-			return err
-		}
-
 	}
+	
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	_, err = w.Write(out)
+	if err != nil {
+		return err
+	}
+
+	
 	return nil
 }
 
